@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title> resultado busqueda </title>
+
+</head>
+
+<body>
+
+
+
+<table  cellspacing="2" cellpadding="2" border="1" bgcolor=dddddd>
+
+	<tr align="center">
+		<td>TITULO</td>
+		<td>PAGINAS</td>
+		<td>CAPITULOS</td>
+		<td>ISBN</td>
+		<td>AÑO EDICION</td>
+		<td>AUTOR</td>
+		<td>EDITORIAL</td>
+	</tr>
+
+	{% for libro in libros %}
+
+	<tr align="center">
+		<td><a href="{{libro.pdf.url}}">{{libro.titulo}}</a></td>
+		<td>{{libro.nropaginas}}</td>
+		<td>{{libro.nrocapitulos}}</td>
+		<td>h{{libro.isbn}}</td>
+		<td>{{libro.agnoedicion}}</td>
+		<td>{{libro.autor}}</td>
+		<td>{{libro.editorial}}</td>
+	</tr>
+
+	{% endfor %}
+
+</table>
+
+
+
+</html>
