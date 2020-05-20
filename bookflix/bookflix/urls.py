@@ -23,13 +23,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     
-    path('admin/', admin.site.urls),
-    path('', views.index),
-    path('verLibros/',views.ver_libros),
+    path('admin/', admin.site.urls, name='admin'),
+    path('', views.index, name='index'),
+    
+    path('verLibros/',views.ver_libros,name='verLibros'),
+    
+    path('verCapitulos/<int:pk>',views.ver_capitulos, name='verCapitulos'),
+    #<int:pk> significa que ver capitulos recibe de parametro la en pk
+    #la clave primaria del libro desde el template que se lo llama (desde verLibros)
 
-    path('register/', views.register),
-    path('login/', views.login),
-    path('logout/', views.logout),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
 
     #path('accounts/', include('django.contrib.auth.urls')),
 

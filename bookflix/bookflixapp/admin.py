@@ -6,11 +6,13 @@ from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 
 
 
-
+#esto es una clase que pone el formulario de Capitulo en una linea 
 class CapituloInline(admin.TabularInline):
     model = Capitulo
 
-@admin.register(Libro)
+
+#esto se llama decorator y ahorra el trabajo de registrar la clase y el libro
+@admin.register(Libro) 
 class LibroAdmin(admin.ModelAdmin):
 
     def get_genero(self,obj):
@@ -23,7 +25,7 @@ class LibroAdmin(admin.ModelAdmin):
     list_display=('titulo','nropaginas','nrocapitulos','isbn','autor','editorial','get_genero','agnoedicion',)
     search_fields=('titulo','autor__nombre','editorial__nombre','genero__nombre',)
     list_filter=('autor','editorial', ('agnoedicion', DateRangeFilter),'genero')
-    inlines = [CapituloInline]
+    inlines = [CapituloInline] #se registra en liro la clase creada anteriormente
 
 
 @admin.register(Genero)
